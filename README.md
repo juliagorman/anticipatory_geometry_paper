@@ -44,6 +44,14 @@ If you use this code, please cite:
 
 ## License
 
-Released under the MIT License. See [LICENSE](LICENSE).
+This repository is released under the MIT License (see [LICENSE](LICENSE)).
+
+### Third-party code
+
+The `edn_popdyn/vendor/` directory contains code by **Tim Sainburg** (`cdcp` and
+`behav`), redistributed under the **BSD 3-Clause License**. See the `LICENSE`
+file within each vendored package (`edn_popdyn/vendor/cdcp/LICENSE` and
+`edn_popdyn/vendor/behav/LICENSE`) for the full terms. This third-party code
+retains its original license and is **not** covered by the MIT License above.
 
 Copyright (c) 2026 Julia C. Gorman
