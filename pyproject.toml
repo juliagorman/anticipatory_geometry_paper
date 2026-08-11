@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edn_popdyn"
+version = "1.0.0"
+description = "Analysis code for 'Anticipatory organization of neural population dynamics speeds behavioral decisions'"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Julia C. Gorman" }]
+dependencies = [
+    "numpy",
+    "scipy",
+    "pandas",
+    "matplotlib",
+    "seaborn",
+    "scikit-learn",
+    "statsmodels",
+    "joblib",
+    "tqdm",
+    "wesanderson",
+]
+
+# Flat layout: the importable package `edn_popdyn/` sits at the repo root.
+[tool.setuptools]
+packages = ["edn_popdyn"]
+include-package-data = true
+
+# Ship the vendored cdcp/behav source (and their licenses) with the package so
+# `import edn_popdyn.paths` can put them on sys.path even in a non-editable install.
+[tool.setuptools.package-data]
+edn_popdyn = ["colors.py", "vendor/**/*.py", "vendor/**/LICENSE"]
