@@ -1,0 +1,38 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- OS / editor cruft ---
+.DS_Store
+*.swp
+
+# --- Manual-upload bundles ---
+*.zip
+
+# --- Large data & regenerated outputs (NOT distributed via git) ---
+# Raw inputs to 0.1
+/data/
+# Processed data produced from 0.1 onward (pop-matrix arrays, caches)
+/processed_data/
+# Old default outputs dir, if present
+/results/
+# Bulk array / pickle formats
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.h5
+*.hdf5
+
+# NOTE: figures/ and stats/ are small and are left tracked on purpose so the
+# repo can ship the paper's final figures and stats tables. Add them here if
+# you'd rather keep them out.
