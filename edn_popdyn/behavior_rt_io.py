@@ -1,25 +1,11 @@
 """
-behavior_rt_io.py -- save/load the 4.2 behavioral RT table.
+behavior_rt_io.py -> save/load the 4.2 behavioral RT table.
 
-Put this at src/edn_popdyn/behavior_rt_io.py.
-
-Why it exists
--------------
-4.2 currently builds its trial table by reading raw Magpi off the cluster:
-
-    behav_data_subject = loading.load_data_pandas([subject], DATA_PATH_MAGPI)
-
-Nobody outside the lab can do that. This module lets 4.2 build the table once,
-save it, and read it back thereafter -- so the notebook runs identically on the
-cluster (builds from Magpi, caches) and for someone who downloaded the Zenodo
-deposit (reads the cached table, never touches Magpi).
 
 Format
 ------
-Parquet when pyarrow/fastparquet is available -- it round-trips dtypes exactly.
-Otherwise gzipped CSV plus a small .dtypes.json sidecar, so datetimes and
-categoricals survive the trip. Both are readable by any pandas; neither is a
-pickle, so the deposit carries no Python-version or security baggage.
+Parquet when pyarrow/fastparquet is available -> round-trips dtypes exactly.
+Otherwise gzipped CSV plus a small .dtypes.json sidecar
 """
 
 from __future__ import annotations
@@ -29,7 +15,7 @@ from pathlib import Path
 
 import pandas as pd
 
-STEM = "fig4_behavior_rt"
+STEM = "behavior_rt"
 
 
 def _parquet_ok() -> bool:

@@ -7,7 +7,7 @@
 """
 
 # ===========================================================================
-# Core cue-validity colours  (your original colors.py)
+# Core cue-validity colors
 # ===========================================================================
 valid = "#157b7b"          # valid cue
 invalid = "#953730"        # invalid cue
