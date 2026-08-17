@@ -16,6 +16,8 @@ pip install -e .
 
 `pip install -e .` makes `import edn_popdyn` work from any notebook — it holds the shared data paths (`paths.py`) and figure color palette (`colors.py`).
 
+**Typical install time:** about 2–5 minutes on a normal desktop with a broadband connection, installing the dependencies below from PyPI wheels (faster if they are already cached; the `edn_popdyn` package itself installs in seconds).
+
 Dependencies: `numpy`, `scipy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`, `statsmodels`, `joblib`, and `tqdm` (see [System requirements](#system-requirements) for tested versions).
 
 Two lab packages by **Tim Sainburg** — `cdcp` and `behav` — are not on PyPI. The source needed by notebooks `1.1` and `4.2` is vendored under `src/edn_popdyn/vendor/` and put on `sys.path` automatically when `edn_popdyn` is imported, so the notebooks' `from cdcp… import …` lines work with no extra setup.
