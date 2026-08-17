@@ -34,7 +34,7 @@ Figures are written to `results/figures/` and stats tables to `results/stats_csv
 
 ## Data
 
-The neural and behavioral data are large and are **not** included in this repository. Processed data are published on Zenodo (Dataset DOI: https://doi.org/10.5281/zenodo.21910353); raw recordings are available upon request.
+The neural and behavioral data are large and are **not** included in this repository. Processed data will be published on Zendo; raw recordings are available upon request.
 
 ## Citation
 
