@@ -1,6 +1,6 @@
 # Demo
 
-Runs notebook `2.2`'s within-category cosine analysis on a small **synthetic** dataset —
+Runs notebook `2.2`'s within-category cosine analysis on a small **synthetic** dataset
 so the code can be tested without the real recordings. Same functions and figures as 2.2.
 
 Each stimulus is one `(strength, interp)` pair (4 strengths × 3 interps = 12 stimuli;
