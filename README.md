@@ -6,57 +6,9 @@ Analysis code and notebooks that reproduce the figures and statistics in:
 
 European starlings categorize song syllables while sensory expectations are manipulated. Combining large-scale auditory-forebrain recordings with dimensionality reduction and dynamical-systems modeling, we show that expectation organizes the geometry of population trajectories in ways that reflect categorical behavior and predict single-trial accuracy and reaction time.
 
-## Installation
+## System requirements
 
-```bash
-git clone https://github.com/juliagorman/anticipatory_geometry_paper.git
-cd anticipatory_geometry_paper
-pip install -e .
-```
-
-`pip install -e .` makes `import edn_popdyn` work from any notebook — it holds the shared data paths (`paths.py`) and figure color palette (`colors.py`).
-
-**Typical install time:** about 2–5 minutes on a normal desktop with a broadband connection, installing the dependencies below from PyPI wheels (faster if they are already cached; the `edn_popdyn` package itself installs in seconds).
-
-Dependencies: `numpy`, `scipy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`, `statsmodels`, `joblib`, and `tqdm` (see [System requirements](#system-requirements) for tested versions).
-
-Two lab packages by **Tim Sainburg** — `cdcp` and `behav` — are not on PyPI. The source needed by notebooks `1.1` and `4.2` is vendored under `edn_popdyn/vendor/` and put on `sys.path` automatically when `edn_popdyn` is imported, so the notebooks' `from cdcp… import …` lines work with no extra setup.
-
-## Demo
-
-A small synthetic dataset and a runnable demo live in [`demo/`](demo/). It runs
-notebook `2.2`'s within-category cosine analysis without any of the real
-recordings, so the install can be verified end to end in under a minute
-
-Jupyter is not installed by `edn_popdyn`; install it first if you don't have it
-(`pip install jupyterlab`).
-
-```bash
-cd demo
-python make_demo_data.py        # writes demo_data.npz (optional; already included)
-jupyter nbconvert --to notebook --execute --inplace demo_cosine.ipynb
-```
-Full details in [`demo/README.md`](demo/README.md).
-
-## Reproducing the paper
-
-Point `EDN_DATA_ROOT` at the data, then run the notebooks in numeric order (`0.1` → `4.2`):
-
-- `0.1`, `0.2` — preprocessing: session discovery and batch PCA
-- `1.1` — psychometric behavior (Fig. 1)
-- `2.1`, `2.2` — population decoding and within-category cosine similarity (Fig. 2)
-- `3.1`, `3.2` — latent-dynamics model and its empirical validation (Fig. 3)
-- `4.1`, `4.2` — expectation, pre-target geometry, and reaction time (Fig. 4)
-
-Figures are written to `results/figures/` and stats tables to `results/stats_csv/`. All paths come from `edn_popdyn/paths.py` and can be overridden with the `EDN_*` environment variables.
-
-
-### Software dependencies
-
-The versions below are the ones the analysis was **tested on**; other recent versions are likely to work but have not been verified.
-
-- **Operating system tested:** Linux `5.15.0-185-generic`, x86_64, glibc 2.35 (Ubuntu 22.04)
-- **Python:** 3.10.20
+Tested on **Python 3.10.20**, Linux `5.15.0-185-generic` x86_64, glibc 2.35 (Ubuntu 22.04). Exact versions of every package, including transitive dependencies, are pinned in [`requirements-tested.txt`](requirements-tested.txt).
 
 | Package | Tested version |
 |---|---|
@@ -69,34 +21,94 @@ The versions below are the ones the analysis was **tested on**; other recent ver
 | statsmodels | 0.14.6 |
 | joblib | 1.5.3 |
 | tqdm | 4.67.3 |
-| nbformat | 5.10.4 |
 
-The two lab packages `cdcp` and `behav` are vendored under `edn_popdyn/vendor/` and require no separate installation.
+Two lab packages by **Tim Sainburg** — `cdcp` and `behav` — are not on PyPI. The source needed by notebooks `1.1` and `4.2` is vendored under `edn_popdyn/vendor/` and placed on `sys.path` when `edn_popdyn` is imported, so no separate installation is required.
 
-### Non-standard hardware
+**Non-standard hardware: none required.** All analyses are CPU-only and run on a standard desktop or laptop. 
 
-**None required.** All analyses are **CPU-only ** and run on a standard desktop or laptop. Some steps distribute work across multiple CPU cores in parallel (via `joblib`, e.g. `n_jobs=8`); a multi-core processor shortens run time but is not required, and the code runs correctly on a single core. No specialized or non-standard hardware is needed.
+## Installation
+
+```bash
+git clone https://github.com/juliagorman/anticipatory_geometry_paper.git
+cd anticipatory_geometry_paper
+pip install -r requirements-tested.txt   # exact tested versions
+pip install -e .                         # installs the edn_popdyn package itself
+```
+
+`pip install -e .` makes `import edn_popdyn` work from any notebook; it holds the shared data paths (`paths.py`) and figure palette (`colors.py`). To install with unpinned dependencies instead, run `pip install -e .` alone.
+
+**Typical install time:** 2–5 minutes on a normal desktop over broadband, or seconds if the wheels are already cached.
+
+## Demo
+
+A small synthetic dataset and a runnable demo live in [`demo/`](demo/). 
+
+Jupyter is not installed by `edn_popdyn`; install it first if needed (`pip install jupyterlab`).
+
+```bash
+cd demo
+python make_demo_data.py        # writes demo_data.npz (optional; already included)
+jupyter nbconvert --to notebook --execute --inplace demo_cosine.ipynb
+```
+
+**Expected run time:** under a minute on a normal computer
+
+**Expected output:** `demo_grid_active.png` and `demo_passive.png`, reproducing the planted effect — population valid > invalid, single-neuron valid < invalid, passive null. Per-region β values are tabulated in [`demo/README.md`](demo/README.md).
+
+## Instructions for use
+
+### Running on your own data
+
+All filesystem locations resolve in `edn_popdyn/paths.py` and are overridable by environment variable. Set these three:
+
+| Variable | Must point at |
+|---|---|
+| `EDN_DATA_ROOT` | session lists, trial-event tables, and behavior tables (layout below) |
+| `EDN_REP_DRIFT_DATA` | the chronic spike-sorted dataset (per-unit trial-aligned spike pickles; available on request) |
+| `EDN_OUTPUT_ROOT` | where intermediates, stats, and figures are written |
+
+```bash
+export EDN_DATA_ROOT=/path/to/data
+export EDN_REP_DRIFT_DATA=/path/to/chronic_spikesorted
+export EDN_OUTPUT_ROOT=/path/to/outputs
+```
+
+The remaining `EDN_*` variables derive from these and rarely need setting
+
+Expected input layout:
+
+```
+$EDN_DATA_ROOT/
+├── bird_str_rec_str_ALL_list.txt              session list
+├── ALL/trial_events/
+│   └── <exp_dir>_trial_events_full.pickle     (or _trial_events.pickle)
+└── behavior/subject_behavior_dfs/B####.pickle
+```
+
+Outputs are written to `$EDN_OUTPUT_ROOT/` as `processed_data/pop_mats` (notebook `0.1`), `processed_data/pca_data` (`0.2`), `stats/`, and `figures/`.
+
+### Reproducing the paper
+
+Run the notebooks in numeric order:
+
+- `0.1`, `0.2` — preprocessing: session discovery and batch PCA
+- `1.1` — psychometric behavior (Fig. 1)
+- `2.1`, `2.2` — population decoding and within-category cosine similarity (Fig. 2)
+- `3.1`, `3.2` — latent-dynamics model and its empirical validation (Fig. 3)
+- `4.1`, `4.2` — expectation, pre-target geometry, and reaction time (Fig. 4)
+
+Notebook `0.1` requires the raw spike-sorted dataset which is available on request. Starting from the processed data, begin at `0.2`. 
 
 ## Data
 
-The neural and behavioral data are large and are **not** included in this repository. Processed data will be published on Zendo; raw recordings are available upon request.
+Processed neural and behavioral data will be available on Zenodo following publication. Raw recordings are available from the corresponding author on request owing to their size.
 
 ## Citation
-
-If you use this code, please cite:
 
 > Gorman JC, Sainburg T, McPherson TS, Gentner TQ. *Anticipatory organization of neural population dynamics speeds behavioral decisions.* bioRxiv 2026.06.30.735699 (2026). https://doi.org/10.64898/2026.06.30.735699
 
 ## License
 
-This repository is released under the MIT License (see [LICENSE](LICENSE)).
-
-### Third-party code
-
-The `edn_popdyn/vendor/` directory contains code by **Tim Sainburg** (`cdcp` and
-`behav`), redistributed under the **BSD 3-Clause License**. See the `LICENSE`
-file within each vendored package (`edn_popdyn/vendor/cdcp/LICENSE` and
-`edn_popdyn/vendor/behav/LICENSE`) for the full terms. This third-party code
-retains its original license and is **not** covered by the MIT License above.
+MIT (see [LICENSE](LICENSE)). The `edn_popdyn/vendor/` directory contains code by **Tim Sainburg** (`cdcp`, `behav`) redistributed under the **BSD 3-Clause License**; see `edn_popdyn/vendor/cdcp/LICENSE` and `edn_popdyn/vendor/behav/LICENSE`. That code retains its original license and is **not** covered by the MIT License above.
 
 Copyright (c) 2026 Julia C. Gorman
