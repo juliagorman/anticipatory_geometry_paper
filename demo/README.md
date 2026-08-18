@@ -1,6 +1,6 @@
 # Demo
 
-Runs notebook `2.2`'s within-category cosine analysis on a small **synthetic** dataset
+Runs notebook `2.2`'s within-category cosine analysis on a small **synthetic** dataset —
 so the code can be tested without the real recordings. Same functions and figures as 2.2.
 
 Each stimulus is one `(strength, interp)` pair (4 strengths × 3 interps; keys like
@@ -35,5 +35,7 @@ Planted effect: **population** valid > invalid, **single-neuron** valid < invali
 | CMM | −0.221 (≪1e-3) | +0.041 (≪1e-3) |
 | Field L | −0.241 (≪1e-3) | +0.041 (≪1e-3) |
 | passive | ≈0 (0.89) | ≈0 (0.88) |
+
+Δ bars use the 2.2 palette (brown = sig. positive, green = sig. negative, grey = n.s.).
 
 The other notebooks (`2.1`, `3.x`, `4.x`) follow the same pattern on the real data.
