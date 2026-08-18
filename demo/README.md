@@ -3,8 +3,9 @@
 Runs notebook `2.2`'s within-category cosine analysis on a small **synthetic** dataset
 so the code can be tested without the real recordings. Same functions and figures as 2.2.
 
-Each stimulus is one `(strength, interp)` pair (4 strengths × 3 interps = 12 stimuli;
-keys like `sL_AF_valid_correct_active`). Cosine is compared between same-category stimuli.
+Each stimulus is one `(strength, interp)` pair (4 strengths × 3 interps; keys like
+`sL_AF_valid_correct_active`). Cosine is computed within each `(strength, interp)`
+stratum: population = split-half template cosine, single-neuron = single-trial pairwise.
 
 ## Run
 
@@ -29,10 +30,10 @@ Planted effect: **population** valid > invalid, **single-neuron** valid < invali
 
 | Region | single-neuron β (P) | population β (P) |
 |---|---|---|
-| ALL | −0.118 (3e-9) | +0.405 (2e-34) |
-| NCM | −0.128 (2e-7) | +0.387 (1e-12) |
-| CMM | −0.076 (0.013) | +0.424 (2e-9) |
-| Field L | −0.096 (0.038) | +0.433 (2e-79) |
-| passive | ≈0 (0.99) | ≈0 (0.99) |
+| ALL | −0.225 (≪1e-3) | +0.041 (≪1e-3) |
+| NCM | −0.214 (≪1e-3) | +0.042 (≪1e-3) |
+| CMM | −0.221 (≪1e-3) | +0.041 (≪1e-3) |
+| Field L | −0.241 (≪1e-3) | +0.041 (≪1e-3) |
+| passive | ≈0 (0.89) | ≈0 (0.88) |
 
 The other notebooks (`2.1`, `3.x`, `4.x`) follow the same pattern on the real data.
