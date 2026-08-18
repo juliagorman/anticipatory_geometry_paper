@@ -26,7 +26,10 @@ Two lab packages by **Tim Sainburg** — `cdcp` and `behav` — are not on PyPI.
 
 A small synthetic dataset and a runnable demo live in [`demo/`](demo/). It runs
 notebook `2.2`'s within-category cosine analysis without any of the real
-recordings, so the install can be verified end to end in seconds.
+recordings, so the install can be verified end to end in under a minute
+
+Jupyter is not installed by `edn_popdyn`; install it first if you don't have it
+(`pip install jupyterlab`).
 
 ```bash
 cd demo
