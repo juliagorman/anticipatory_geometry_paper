@@ -31,6 +31,7 @@ Two lab packages by **Tim Sainburg** — `cdcp` and `behav` — are not on PyPI.
 ```bash
 git clone https://github.com/juliagorman/anticipatory_geometry_paper.git
 cd anticipatory_geometry_paper
+pip install --upgrade pip
 pip install -r requirements-tested.txt   # exact tested versions
 pip install -e .                         # installs the edn_popdyn package itself
 ```
