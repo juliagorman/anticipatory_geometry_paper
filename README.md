@@ -8,7 +8,7 @@ European starlings categorize song syllables while sensory expectations are mani
 
 ## System requirements
 
-Tested on **Python 3.10.20**, Linux `5.15.0-185-generic` x86_64, glibc 2.35 (Ubuntu 22.04). Exact versions of every package, including transitive dependencies, are pinned in [`requirements-tested.txt`](requirements-tested.txt).
+Tested on **Python 3.10.20**, Linux `5.15.0-185-generic` x86_64, glibc 2.35 (Ubuntu 22.04). Also verified to install and import on macOS 14 (Apple Silicon) with Python 3.10. Exact versions of every package, including transitive dependencies, are pinned in [`requirements-tested.txt`](requirements-tested.txt).
 
 | Package | Tested version |
 |---|---|
