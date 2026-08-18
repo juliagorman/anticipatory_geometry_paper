@@ -20,7 +20,7 @@ pip install -e .
 
 Dependencies: `numpy`, `scipy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`, `statsmodels`, `joblib`, and `tqdm` (see [System requirements](#system-requirements) for tested versions).
 
-Two lab packages by **Tim Sainburg** — `cdcp` and `behav` — are not on PyPI. The source needed by notebooks `1.1` and `4.2` is vendored under `src/edn_popdyn/vendor/` and put on `sys.path` automatically when `edn_popdyn` is imported, so the notebooks' `from cdcp… import …` lines work with no extra setup.
+Two lab packages by **Tim Sainburg** — `cdcp` and `behav` — are not on PyPI. The source needed by notebooks `1.1` and `4.2` is vendored under `edn_popdyn/vendor/` and put on `sys.path` automatically when `edn_popdyn` is imported, so the notebooks' `from cdcp… import …` lines work with no extra setup.
 
 ## Reproducing the paper
 
@@ -32,7 +32,7 @@ Point `EDN_DATA_ROOT` at the data, then run the notebooks in numeric order (`0.1
 - `3.1`, `3.2` — latent-dynamics model and its empirical validation (Fig. 3)
 - `4.1`, `4.2` — expectation, pre-target geometry, and reaction time (Fig. 4)
 
-Figures are written to `results/figures/` and stats tables to `results/stats_csv/`. All paths come from `src/edn_popdyn/paths.py` and can be overridden with the `EDN_*` environment variables — no code edits needed.
+Figures are written to `results/figures/` and stats tables to `results/stats_csv/`. All paths come from `edn_popdyn/paths.py` and can be overridden with the `EDN_*` environment variables.
 
 ## System requirements
 
@@ -56,11 +56,11 @@ The versions below are the ones the analysis was **tested on**; other recent ver
 | tqdm | 4.67.3 |
 | nbformat | 5.10.4 |
 
-The two lab packages `cdcp` and `behav` are vendored under `src/edn_popdyn/vendor/` and require no separate installation.
+The two lab packages `cdcp` and `behav` are vendored under `edn_popdyn/vendor/` and require no separate installation.
 
 ### Non-standard hardware
 
-**None required.** All analyses are **CPU-only — no GPU is needed** — and run on a standard desktop or laptop. Some steps distribute work across multiple CPU cores in parallel (via `joblib`, e.g. `n_jobs=8`); a multi-core processor shortens run time but is not required, and the code runs correctly on a single core. No specialized or non-standard hardware is needed.
+**None required.** All analyses are **CPU-only ** and run on a standard desktop or laptop. Some steps distribute work across multiple CPU cores in parallel (via `joblib`, e.g. `n_jobs=8`); a multi-core processor shortens run time but is not required, and the code runs correctly on a single core. No specialized or non-standard hardware is needed.
 
 ## Data
 
