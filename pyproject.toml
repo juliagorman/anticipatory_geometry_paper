@@ -20,7 +20,7 @@ dependencies = [
     "statsmodels",
     "joblib",
     "tqdm",
-    "wesanderson",
+    "nbformat",
 ]
 
 # Flat layout: the importable package `edn_popdyn/` sits at the repo root.
