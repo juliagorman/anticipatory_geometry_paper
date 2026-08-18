@@ -22,6 +22,19 @@ Dependencies: `numpy`, `scipy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn
 
 Two lab packages by **Tim Sainburg** — `cdcp` and `behav` — are not on PyPI. The source needed by notebooks `1.1` and `4.2` is vendored under `edn_popdyn/vendor/` and put on `sys.path` automatically when `edn_popdyn` is imported, so the notebooks' `from cdcp… import …` lines work with no extra setup.
 
+## Demo
+
+A small synthetic dataset and a runnable demo live in [`demo/`](demo/). It runs
+notebook `2.2`'s within-category cosine analysis without any of the real
+recordings, so the install can be verified end to end in seconds.
+
+```bash
+cd demo
+python make_demo_data.py        # writes demo_data.npz (optional; already included)
+jupyter nbconvert --to notebook --execute --inplace demo_cosine.ipynb
+```
+Full details in [`demo/README.md`](demo/README.md).
+
 ## Reproducing the paper
 
 Point `EDN_DATA_ROOT` at the data, then run the notebooks in numeric order (`0.1` → `4.2`):
@@ -34,7 +47,6 @@ Point `EDN_DATA_ROOT` at the data, then run the notebooks in numeric order (`0.1
 
 Figures are written to `results/figures/` and stats tables to `results/stats_csv/`. All paths come from `edn_popdyn/paths.py` and can be overridden with the `EDN_*` environment variables.
 
-## System requirements
 
 ### Software dependencies
 
