@@ -35,6 +35,4 @@ Planted effect: **population** valid > invalid, **single-neuron** valid < invali
 | Field L | −0.096 (0.038) | +0.433 (2e-79) |
 | passive | ≈0 (0.99) | ≈0 (0.99) |
 
-Δ bars use the 2.2 palette (brown = sig. positive, green = sig. negative, grey = n.s.).
-
 The other notebooks (`2.1`, `3.x`, `4.x`) follow the same pattern on the real data.
