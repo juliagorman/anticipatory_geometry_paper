@@ -13,8 +13,7 @@ python make_demo_data.py        # writes demo_data.npz (optional; already includ
 jupyter nbconvert --to notebook --execute --inplace demo_cosine.ipynb
 ```
 
-Needs `numpy`, `pandas`, `matplotlib`, `seaborn`, `statsmodels`, `scipy`. Runs in a few
-seconds.
+Needs `numpy`, `pandas`, `matplotlib`, `seaborn`, `statsmodels`, `scipy`. Runs in under a minute on a normal computer.
 
 ## Files
 
