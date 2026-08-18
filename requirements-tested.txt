@@ -1,4 +1,5 @@
-# Tested environment: Python 3.10.20 on Linux-5.15.0-185-generic-x86_64-with-glibc2.35
+# Tested environment: Python 3.10.20 on Linux-5.15.0-185-generic-x86_64-with-glibc2.35 
+# Also verified to install and import on macOS 14 (Apple Silicon) with Python 3.10.
 # Install with:   pip install -r requirements-tested.txt
 
 numpy==2.2.6
