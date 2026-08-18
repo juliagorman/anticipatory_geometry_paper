@@ -7,7 +7,7 @@ name = "edn_popdyn"
 version = "1.0.0"
 description = "Analysis code for 'Anticipatory organization of neural population dynamics speeds behavioral decisions'"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "Julia C. Gorman" }]
 dependencies = [
