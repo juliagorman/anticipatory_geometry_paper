@@ -19,8 +19,7 @@ dependencies = [
     "scikit-learn",
     "statsmodels",
     "joblib",
-    "tqdm",
-    "nbformat",
+    "tqdm"
 ]
 
 # Flat layout: the importable package `edn_popdyn/` sits at the repo root.
